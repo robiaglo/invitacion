@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap');
+        
+        /* Previous styles remain the same */
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #f9f7f4 0%, #fff 50%, #f9f7f4 100%);
+            padding: 40px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            position: relative;
+            border: 3px solid #d4af37;
+            padding: 60px 40px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            animation: fadeIn 2s ease-in-out;
+            width: 100%;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes borderShine {
+            0% { border-image: linear-gradient(45deg, #d4af37, #fff6e6, #d4af37) 1; }
+            50% { border-image: linear-gradient(45deg, #fff6e6, #d4af37, #fff6e6) 1; }
+            100% { border-image: linear-gradient(45deg, #d4af37, #fff6e6, #d4af37) 1; }
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid #d4af37;
+            z-index: 1;
+            animation: borderShine 4s linear infinite;
+        }
+        
+        .inner-content {
+            position: relative;
+            z-index: 2;
+            background: radial-gradient(circle at center, white 60%, rgba(212, 175, 55, 0.05) 100%);
+            padding: 20px;
+        }
+        
+        .fancy-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            background: linear-gradient(45deg, #d4af37, #907020);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: floatText 3s ease-in-out infinite;
+        }
+        
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .cross {
+            font-size: 56px;
+            color: #d4af37;
+            margin: 20px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            animation: glow 2s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+            50% { text-shadow: 0 0 25px rgba(212, 175, 55, 0.7); }
+        }
+        
+        .header {
+            font-family: 'Playfair Display', serif;
+            color: #907020;
+            font-size: 28px;
+            margin: 25px 0;
+            line-height: 1.6;
+            font-weight: 600;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .names {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            background: linear-gradient(45deg, #4a4a4a, #907020);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 30px 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.5s ease;
+        }
+        
+        .names:hover {
+            transform: scale(1.05);
+            letter-spacing: 3px;
+        }
+        
+        .details {
+            font-size: 22px;
+            line-height: 1.8;
+            color: #555;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .date {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #907020;
+            margin: 25px 0;
+            font-weight: 600;
+            animation: fadeInUp 1.5s ease-out;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .divider {
+            position: relative;
+            height: 40px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 1s ease-out;
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        .divider::before {
+            content: '❦';
+            color: #d4af37;
+            font-size: 28px;
+            animation: rotate 4s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .divider::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            z-index: -1;
+        }
+        
+        .bible-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #907020;
+            margin: 40px 0;
+            font-size: 20px;
+            line-height: 1.8;
+            padding: 30px;
+            background: linear-gradient(to right, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-radius: 15px;
+            animation: pulseBackground 4s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+        }
+        
+        @keyframes pulseBackground {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .dove {
+            font-size: 42px;
+            margin: 20px;
+            animation: fly 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+        
+        @keyframes fly {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, -10px) rotate(5deg); }
+            75% { transform: translate(-10px, 10px) rotate(-5deg); }
+        }
+        
+        .child-info {
+            margin: 40px 0;
+            padding: 35px;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.08), transparent);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .child-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.12), transparent);
+        }
+        
+        .location {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.1));
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+        }
+        
+        .location:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+        }
+        
+        .corner-ornament {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            color: #d4af37;
+            font-size: 32px;
+            animation: sparkle 2s ease-in-out infinite;
+            opacity: 0.8;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .top-left { top: 20px; left: 20px; }
+        .top-right { top: 20px; right: 20px; transform: rotate(90deg); }
+        .bottom-left { bottom: 20px; left: 20px; transform: rotate(270deg); }
+        .bottom-right { bottom: 20px; right: 20px; transform: rotate(180deg); }
+
+        strong {
+            color: #907020;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        /* New styles for QR code container */
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .qr-container:hover {
+            transform: scale(1.02);
+            background: rgba(212, 175, 55, 0.08);
+        }
+        
+        .qr-label {
+            font-family: 'Playfair Display', serif;
+            color: #907020;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="corner-ornament top-left">✦</div>
+        <div class="corner-ornament top-right">✦</div>
+        <div class="corner-ornament bottom-left">✦</div>
+        <div class="corner-ornament bottom-right">✦</div>
+        <div class="inner-content">
+            <div class="cross">✝️</div>
+            <div class="fancy-title">Sacramento del Bautismo</div>
+            <div class="header">Con inmensa alegría y la bendición de Dios,<br>invitamos a compartir un momento sagrado</div>
+            <div class="dove">🕊️</div>
+            
+            <div class="child-info">
+                <div class="names">Bismarck Daniel</div>
+                <div class="details">
+                    Acompañado por sus padrinos<br>
+                    <strong>Leydi Johanna Coronel Carrillo</strong><br>
+                    y<br>
+                    <strong>Félix Israel Parrales Palacios</strong>
+                </div>
+            </div>
+
+            <div class="child-info">
+                <div class="names">Manuel Sebastian</div>
+                <div class="details">
+                    Acompañado por sus padrinos<br>
+                    <strong>Emily Fernanda Loayza Espinoza</strong><br>
+                    y<br>
+                    <strong>Alain Emmanuel López Garofalo</strong>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+
+            <div class="date">
+                Sábado, 30 de noviembre de 2024<br>
+                6:00 de la tarde
+            </div>
+
+            <div class="location">
+                <div class="details">
+                    <strong>Iglesia Católica San Pedro de Sayausí</strong><br>
+                    Parroquia Sayausí<br>
+                    Cuenca, Ecuador
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="details">
+                <strong>Sus Padres</strong><br>
+                Roddy Bismarck Aguilar Loayza<br>
+                y<br>
+                Andrea Elizabeth Martinez Coronel
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="details">
+                Al finalizar la ceremonia,<br>
+                tendremos el gusto de compartir una cena familiar en<br>
+                <strong>Restaurante María Asunción</strong>
+            </div>
+
+            <div class="qr-container">
+                <img src="https://www.codigos-qr.com/qr/php/qr_img.php?d=https%3A%2F%2Fmaps.app.goo.gl%2FEeqtGNhvdnSkRXSB6&s=6&e=m" alt="QR Code para ubicación del restaurante" />
+                <div class="qr-label">Escanea para ver la ubicación</div>
+            </div>
+
+            <div class="bible-quote">
+                "Dejen que los niños vengan a mí,<br>
+                porque de los que son como ellos es el Reino de los Cielos"<br>
+                <em>Mateo 19:14</em>
+            </div>
+            
+            <div class="dove">🕊️</div>
+        </div>
+    </div>
+</body>
+</html>
